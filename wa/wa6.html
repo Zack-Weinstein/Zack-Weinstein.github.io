@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WA6 Design System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Color Palette */
+            --color-primary: #9C3A22;    /* rust, from the Flatirons */
+            --color-secondary: #2B6A99;  /* sky blue */
+            --color-accent: #E0A030;     /* gold */
+            --color-green: #3E6B4B;      /* pine green, for visited links */
+            --color-neutral: #2A2420;    /* dark brown, for text */
+            --color-background: #F7F2EA; /* off-white */
+            --color-text-light: white;
+
+            /* Typography */
+            --font-primary: 'Space Grotesk', sans-serif;
+            --font-secondary: 'JetBrains Mono', monospace;
+
+            /* Spacing System (multiples of 8px) */
+            --spacing-xs: 0.5rem;   /* 8px */
+            --spacing-sm: 1rem;     /* 16px */
+            --spacing-md: 1.5rem;   /* 24px */
+            --spacing-lg: 2rem;     /* 32px */
+            --spacing-xl: 3rem;     /* 48px */
+
+            --radius: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+            background-color: var(--color-background);
+            color: var(--color-neutral);
+            padding: var(--spacing-lg);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        /* Typography - 1.25 scale: 0.8, 1, 1.25, 1.563, 1.953, 2.441 */
+        h1 {
+            font-size: 2.441rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h2 {
+            font-size: 1.953rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h3 {
+            font-size: 1.563rem;
+            font-weight: 500;
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .small-text {
+            font-size: 0.8rem;
+        }
+
+        code {
+            font-family: var(--font-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Color Palette */
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: var(--spacing-sm);
+        }
+
+        .color-swatch {
+            padding: var(--spacing-md) var(--spacing-sm);
+            border-radius: var(--radius);
+        }
+
+        .color-swatch p {
+            font-family: var(--font-secondary);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        /* Spacing Demo */
+        .spacing-demo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .spacing-block {
+            background-color: var(--color-secondary);
+            height: 40px;
+        }
+
+        /* Buttons */
+        .button {
+            display: inline-block;
+            font: inherit;
+            padding: var(--spacing-xs) var(--spacing-md);
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            text-decoration: none;
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .button:hover {
+            background-color: color-mix(in srgb, var(--color-primary) 80%, black);
+        }
+
+        .button:focus {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* Links */
+        .link {
+            color: var(--color-secondary);
+            transition: color 0.2s ease;
+        }
+
+        .link:hover {
+            color: var(--color-primary);
+            text-decoration-color: var(--color-accent);
+        }
+
+        .link:visited {
+            color: var(--color-green);
+        }
+
+        .link:focus {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+        }
+
+        /* Form Inputs */
+        .input {
+            font: inherit;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border: 2px solid var(--color-neutral);
+            border-radius: var(--radius);
+            background-color: white;
+        }
+
+        .input:focus {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 2px;
+            border-color: var(--color-secondary);
+        }
+
+        .components {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Design System</h1>
+        <p>Colors are based on the Flatirons and the foothills west of Boulder.</p>
+
+        <section>
+            <h2>Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-swatch" style="background-color: var(--color-primary); color: var(--color-text-light);">
+                    <strong>Primary</strong>
+                    <p>#9C3A22</p>
+                    <small>White text: 6.9:1 &middot; On background: 6.19:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-secondary); color: var(--color-text-light);">
+                    <strong>Secondary</strong>
+                    <p>#2B6A99</p>
+                    <small>White text: 5.79:1 &middot; On background: 5.2:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-accent); color: var(--color-neutral);">
+                    <strong>Accent</strong>
+                    <p>#E0A030</p>
+                    <small>Dark text: 6.74:1 &middot; Not used for text on background (2.04:1)</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-green); color: var(--color-text-light);">
+                    <strong>Green</strong>
+                    <p>#3E6B4B</p>
+                    <small>White text: 6.16:1 &middot; On background: 5.53:1</small>
+                </div>
+                <div class="color-swatch" style="background-color: var(--color-neutral); color: var(--color-text-light);">
+                    <strong>Neutral</strong>
+                    <p>#2A2420</p>
+                    <small>White text: 15.31:1 &middot; On background: 13.74:1</small>
+                </div>
+            </div>
+            <p class="small-text">Background is #F7F2EA. All text pairings pass WCAG AA (4.5:1).</p>
+        </section>
+
+        <section>
+            <h2>Typography</h2>
+            <p>Space Grotesk for headings and body, JetBrains Mono for code. Sizes use a 1.25 scale.</p>
+            <h1>Heading 1 - 2.441rem</h1>
+            <h2>Heading 2 - 1.953rem</h2>
+            <h3>Heading 3 - 1.563rem</h3>
+            <p>Body text - 1rem with a 1.6 line height.</p>
+            <p class="small-text">Small text - 0.8rem, for captions and footnotes.</p>
+            <p><code>--color-primary: #9C3A22;</code></p>
+        </section>
+
+        <section>
+            <h2>Spacing System</h2>
+            <div class="spacing-demo">
+                <div class="spacing-block" style="width: var(--spacing-xs)"></div>
+                <div class="spacing-block" style="width: var(--spacing-sm)"></div>
+                <div class="spacing-block" style="width: var(--spacing-md)"></div>
+                <div class="spacing-block" style="width: var(--spacing-lg)"></div>
+                <div class="spacing-block" style="width: var(--spacing-xl)"></div>
+            </div>
+            <p>8px, 16px, 24px, 32px, 48px. Used for all margins, padding, and gaps on this page.</p>
+        </section>
+
+        <section>
+            <h2>Components</h2>
+            <h3>Buttons</h3>
+            <div class="components">
+                <a href="#" class="button">Button Link</a>
+                <button type="button" class="button">Button</button>
+            </div>
+
+            <h3>Links</h3>
+            <div class="components">
+                <a href="#" class="link">Link (hover me)</a>
+                <a href="https://www.colorado.edu/" class="link">Visited link</a>
+            </div>
+
+            <h3>Form Inputs</h3>
+            <div class="components">
+                <label for="name">Name</label>
+                <input id="name" class="input" type="text" placeholder="Your name">
+                <label for="email">Email</label>
+                <input id="email" class="input" type="email" placeholder="you@colorado.edu">
+            </div>
+        </section>
+
+        <p class="small-text">Zachary Weinstein &middot; ATLS 2200 &middot; WA6</p>
+    </div>
+</body>
+</html>
